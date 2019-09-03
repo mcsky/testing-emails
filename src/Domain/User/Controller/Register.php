@@ -52,8 +52,7 @@ class Register
             $this->users->save($user);
 
             return new JsonResponse([
-                'id' => $user->getId(),
-                'registrationToken' => $user->getRegistrationToken(),
+                'message' => 'User created',
             ]);
         }
 

@@ -78,6 +78,7 @@ class User extends DomainModel implements UserInterface
 
     public function prepareRegistration(): void
     {
+        dump('prepareRegistration');
         $this->registrationToken = base64_encode(\random_bytes(30));
         $this->dispatch(new Register($this, $this->registrationToken), self::EVENT_PREPARE_REGISTRATION);
     }

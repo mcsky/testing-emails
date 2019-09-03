@@ -11,6 +11,8 @@ app_email_verify:
   path: /api/register/verify/{token}
   methods: GET
   controller: App\Domain\User\Controller\VerifyAccount
+  requirements:
+    token: '.*'
 
 app_protected:
   path: /api/protected/hello

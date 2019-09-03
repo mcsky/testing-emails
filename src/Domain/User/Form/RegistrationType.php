@@ -41,9 +41,7 @@ class RegistrationType extends AbstractType
                             return;
                         }
 
-                        dump($this->users->findByEmail($email));
                         if (null !== $this->users->findByEmail($email)) {
-                            dump($this->users->findByEmail($email));
                             $executionContext->addViolation('registration.email.already_register');
                         }
                     }),

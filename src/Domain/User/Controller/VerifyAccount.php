@@ -9,6 +9,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class VerifyAccount
 {
+    public const REDIRECT_AFTER_VERIFY = 'http://yourUrl/welcomePage';
+
     /** @var Users */
     private $users;
 
@@ -26,6 +28,6 @@ class VerifyAccount
         $user->verifyEmail();
         $this->users->save($user);
 
-        return new RedirectResponse('http://yourUrl/welcomePage');
+        return new RedirectResponse(self::REDIRECT_AFTER_VERIFY);
     }
 }
