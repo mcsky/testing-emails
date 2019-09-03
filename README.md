@@ -5,15 +5,17 @@ Il présente comment réaliser une authentification JWT sur une API avec Symfony
 De plus il montre une façon de tester unitairement et fonctionnellement ces proccess.
 
 
+## Configuration
+
+Renseigner vos valeurs pour envoyer les mails dans le `.env`
+
+Sans cela une erreur apparaitra à l'installation
+
 ## Installation 
 
 ```bash
 composer install && bin/console do:sc:up -f && bin/console ha:fi:lo -n
 ```
-
-## Configuration
-
-Renseigner vos valeurs pour envoyer les mails dans le `.env`
 
 ## Lancement du serveur dev de Symfony 
 
