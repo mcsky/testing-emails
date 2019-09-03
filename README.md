@@ -11,6 +11,10 @@ De plus il montre une façon de tester unitairement et fonctionnellement ces pro
 composer install && bin/console do:sc:up -f && bin/console ha:fi:lo -n
 ```
 
+## Configuration
+
+Renseigner vos valeurs pour envoyer les mails dans le `.env`
+
 ## Lancement du serveur dev de Symfony 
 
 ```bash
