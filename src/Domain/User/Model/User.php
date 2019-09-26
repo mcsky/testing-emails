@@ -37,12 +37,6 @@ class User extends DomainModel implements UserInterface
     private $registrationToken;
 
     /**
-     * Plain password, not mapped in database
-     * @var string|null
-     */
-    private $plainPassword;
-
-    /**
      * Encoded password
      * @ORM\Column(type="string")
      * @var string
@@ -69,7 +63,6 @@ class User extends DomainModel implements UserInterface
             return;
         }
 
-        $this->plainPassword = $plainPassword;
         $event               = new PasswordChanged($this, $plainPassword, function ($password) {
             $this->password = $password;
         });
@@ -78,7 +71,6 @@ class User extends DomainModel implements UserInterface
 
     public function prepareRegistration(): void
     {
-        dump('prepareRegistration');
         $this->registrationToken = base64_encode(\random_bytes(30));
         $this->dispatch(new Register($this, $this->registrationToken), self::EVENT_PREPARE_REGISTRATION);
     }
@@ -110,6 +102,7 @@ class User extends DomainModel implements UserInterface
     public function verifyEmail(): void
     {
         $this->emailVerified = true;
+        $this->registrationToken = null;
     }
 
     /**
@@ -141,7 +134,7 @@ class User extends DomainModel implements UserInterface
      */
     public function getSalt()
     {
-        return null; // Use salt of PHP7
+        return null; // Use bcrypt of PHP7 (cf security.yaml)
     }
 
     /**
@@ -162,6 +155,5 @@ class User extends DomainModel implements UserInterface
      */
     public function eraseCredentials()
     {
-        $this->plainPassword = null;
     }
 }

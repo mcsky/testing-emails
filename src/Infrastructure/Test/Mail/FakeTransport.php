@@ -14,7 +14,7 @@ use Symfony\Component\Mime\RawMessage;
 
 class FakeTransport implements MailerInterface
 {
-    const KEY_SPOOL = 'formulez.email.spool';
+    const KEY_SPOOL = 'app.email.spool';
 
     private $cache;
 
